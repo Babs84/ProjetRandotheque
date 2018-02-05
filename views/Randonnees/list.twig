@@ -1,0 +1,32 @@
+{% extends 'Randonnees/search.twig' %}
+
+{% block contentList %}
+  <h4 class="title">{{count}}</h4>
+  {% for Randonnee in Randonnees %}
+        <div class="mdl-layout__tab-panel mdl-color--grey-300 is-active"">
+          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <header class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
+            <img id="list" src="../views/images/{{Randonnee.get('Image')}}"" title="{{Randonnee.get('NomRando')}}" alt="{{Randonnee.get('NomRando')}}">         
+            </header>
+            <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+              <div class="mdl-card__supporting-text">
+                <h4><img src="../views/images/mode-pied.png" title="A pied" alt="A pied" height="28">  <a href="detail/{{Randonnee.get('idRandonnee')}}" target="_blank" >{{Randonnee.get('NomRando')}}</a></h4>
+                <div>
+                    <img src="../views/images/distance.png" title="Distance" alt="Distance" height="28">
+                    {{Randonnee.get('Distance')}} km 
+                    <img src="../views/images/duree.png" title="Durée" alt="Durée" height="28">
+                    {{Randonnee.get('Duree')}}h 
+                    <img src="../views/images/difficulte.png" title="DifficulteIBP" alt="DifficulteIBP" height="28">
+                    {{Randonnee.get('DifficulteIBP')}}
+                    <br>
+                    <img src="../views/images/depart.png" title="Départ" alt="Départ" height="28">
+                    Départ à {{Randonnee.get('LieuDepart')}} ({{Randonnee.get('Departement')}})
+                  </div>
+                  <br>
+                  Randonnée réalisée le {{Randonnee.get('DateRandonnee')}} par le groupe Groupe {{Randonnee.get('GroupeRandonnee')}}. 
+              </div>
+            </div>
+          </section>
+        </div>
+  {% endfor %}
+{% endblock %}

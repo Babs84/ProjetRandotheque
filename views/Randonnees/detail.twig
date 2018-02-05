@@ -1,0 +1,56 @@
+{% extends 'view.twig' %}
+
+{% set space = '../' %}
+
+{% block content %}
+	{% for Randonnee in Randonnee %}
+		<h1 class="title">Randonnée {{Randonnee.get('NomRando')}}</h1>
+		<div class="mdl-grid">
+	    	<div class="mdl-cell mdl-cell--5-col">
+	      		<a href="../../views/images/{{Randonnee.get('Image')}}" download="{{Randonnee.get('Image')}}"><img id="illustrationRando" src="{{space}}../views/images/{{Randonnee.get('Image')}}" ></a>
+			</div>
+
+			<div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--9-col-tablet mdl-cell--9-col-phone">
+				
+				<div id="FrameR" class="detailsR">
+					<div class="detail mdl-card__title mdl-color--primary mdl-color-text--white">
+						<h2 class="mdl-card__title-text">Informations :</h2>
+					</div>
+					<div>Départ : {{Randonnee.get('LieuDepart')}} </div>
+					<div>Distance : {{Randonnee.get('Distance')}} Km </div>
+					<div>Dénivelé : {{Randonnee.get('Denivele')}} m</div>
+					<div>Localisation : {{Randonnee.get('Localisation')}} </div>
+					<div>Boucle : {{Randonnee.get('Boucle')}} </div>
+					<div>Difficulté IBP : {{Randonnee.get('DifficulteIBP')}}</div>
+					<div>A préviligier en cas de {{Randonnee.get('meteo')}}</div>
+					<div>Dernière réalisation le {{Randonnee.get('DateRandonnee')}} par le groupe {{Randonnee.get('GroupeRandonnee')}}</div>	
+			</div>
+			<div  id="FrameR" class="detailsDL" >
+				<div class="detail mdl-card__title mdl-color--primary mdl-color-text--white">
+					<h2 class="mdl-card__title-text">Fichiers téléchargeables :</h2>
+				</div>
+				<div>
+					<a href="{{space}}../views/gpx/{{Randonnee.get('Trace')}}" download="{{Randonnee.get('Trace')}}"><img id="IllusGPXPDF" src="{{space}}../views/images/DLBoutton.jpg"></a>
+					Fichier .GPX/.TRK de la trace GPS
+				</div>
+				<div>
+					<a href="{{space}}../views/pdf/{{Randonnee.get('ItinerairePdf')}}" download="{{Randonnee.get('ItinerairePdf')}}"><img id="IllusGPXPDF" src="{{space}}../views/images/DLBoutton.jpg"></a>
+					Fichier .PDF de l'itinéraire
+				</div>
+
+					<span class="mdl-list__item-secondary-content">
+			        	<a class="mdl-list__item-secondary-action" href="{{space}}update/{{Randonnee.get('idRandonnee')}}"><i class="material-icons">edit</i> Modifier</a>
+			        </span>
+			        <span class="mdl-list__item-secondary-content">
+			        	<a class="mdl-list__item-secondary-action" href="{{space}}delete/{{Randonnee.get('idRandonnee')}}"><i class="material-icons">delete</i> Supprimer</a>
+			        </span>
+			        <span class="mdl-list__item-secondary-content">
+						<a class="mdl-list__item-secondary-action" href="{{space}}trace/{{Randonnee.get('idRandonnee')}}"><i class="material-icons">map</i> Afficher la trace GPX</a>
+			        </span>
+			</div>
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}
+
+

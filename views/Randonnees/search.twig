@@ -1,0 +1,82 @@
+{% extends 'view.twig' %}
+
+{% block content %}
+	<h1 class="title">Recherche d'une randonnée</h1>
+	<div id="overlay" onclick="off()">
+	  	<div id="text">
+		  	<div class="contentoverlay ">
+			  	<h1>Rechercher une randonnée</h1>
+			  	<p>
+			  	- Si vous souhaitez rechercher une randonnée avec des caractéristiques spécifiques, renseignez dans le formulaire les caractéristiques souhaitées puis cliquez sur le bouton “RECHERCHER” en bas à droite du formulaire. Si des randonnées correspondent aux critères renseignés dans le formulaire, elles seront affichées sous forme de liste.
+			  	</p>
+			  	<p>
+			  	- Si vous souhaitez rechercher toutes les randonnées, ne renseignez aucun champ du formulaire et cliquez sur le bouton “RECHERCHER”.
+			  	</p>
+			</div>
+		</div>
+	</div>
+<div class="mdl-layout__tab-panel mdl-color--grey-300 is-active">
+	<form method="post" action="{{ path('searched') }}" enctype="multipart/form-data">
+		<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+			<div class="mdl-card mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+				<div class="mdl-card__supporting-text">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="number" id="idDepartement" min="0" max="99" name="Departement"/>
+						<label class="mdl-textfield__label" >N° Departement</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" id="idLocalisation" name="Localisation"/>
+						<label class="mdl-textfield__label" >Localisation</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="number" min="0" id="idDifficulteIBP" name="DifficulteIBP"/>
+						<label class="mdl-textfield__label" >Indice IBP</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<legend>A privilégier en cas de :</legend>
+						<input type="radio" id="Meteo1" name="meteo" value="pluie">
+						<label for="Meteo1">Pluie</label>
+						
+						<input type="radio" id="Meteo2" name="meteo" value="chaleur">
+						<label for="Meteo2">Chaleur</label>
+						
+						<input type="radio" id="Meteo3" name="meteo" value="vent">
+						<label for="Meteo3">Vent</label>
+
+						<input type="radio" id="Meteo4" name="meteo" value="" checked>
+						<label for="Meteo4">Aucune</label>											
+					</div>				
+				</div>
+			</div>
+			<div class="mdl-card mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+				<div class="mdl-card__supporting-text">
+					<button type="button" onclick="on()" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+						<i class="material-icons">help</i>
+					</button>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="number" id="Denivele" min="0" name="Denivele"/>
+						<label class="mdl-textfield__label" >Denivele max en m</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="number" id="Distance" min="0" step="any" name="Distance"/>
+						<label class="mdl-textfield__label" >Distance max en Km</label>
+					</div>
+				
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" id="LieuDepart" name="LieuDepart"/>
+						<label class="mdl-textfield__label" >Lieu de départ</label>
+					</div>
+				
+				</div>
+				<button type="submit" class="mdl-button mdl-color-text--blue-grey-900 mdl-js-button mdl-js-ripple-effect">Rechercher</button>
+			</div>
+		</div>	
+	</form>
+	{% block contentList %}
+
+	{% endblock %}
+<script>
+	function on() { document.getElementById("overlay").style.display = "block";}
+	function off() { document.getElementById("overlay").style.display = "none";}
+</script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'view.twig' %}
+
+{% block content %}
+
+{% for compte in compte %}
+    <div class="mdl-grid mdl-color--grey-300">
+		<div class="mdl-card mdl-cell mdl-cell--9-col mdl-cell--8-col-desktop">
+		  <ul class="detailcomposants-list-three mdl-list">
+			<li>
+				<h2 class="detailTitle">Informations: </h2>
+				  <div class="detail-compo">
+					<div class="descName">Prénom</div>
+					<div class="descDesc">{{compte.get('prenom')}}</div>
+				  </div>
+				  <div class="detail-compo">
+					<div class="descName">Nom</div>
+					<div class="descDesc">{{compte.get('nom')}}</div>
+				  </div>
+				  <div class="detail-compo">
+					<div class="descName">Email</div>
+					<div class="descDesc">{{compte.get('email')}}</div>
+				  </div>
+				  <div class="detail-compo">
+					<div class="descName">Type de compte</div>
+					<div class="descDesc">{{admin}}</div>
+				  </div>
+				  <div class="detail-compo">
+					   <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--grey-300" href="{{ path('ListeComptes') }}">Retour à la liste des comptes</a>
+				  </div>
+			</li>
+		  </ul>
+		</div>	
+  	</div>
+
+{% endfor %}
+{% endblock %}

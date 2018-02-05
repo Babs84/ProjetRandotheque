@@ -1,0 +1,64 @@
+{% extends 'view.twig' %}
+
+{% block content %}
+
+<div class="produits mdl-layout__tab-panel mdl-color--grey-300 is-active">
+	<div class="mdl-card__supporting-text">
+	<form method="post" action="{{ path('updatedCompte') }}">
+		<div class="produits mdl-card__title mdl-color--primary mdl-color-text--white">
+			<h2 class="mdl-card__title-text">Modifier les informations personnelles</h2>
+		</div>
+		<section class="produits section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+	
+			<div class="mdl-card mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+				<div class="mdl-card__supporting-text">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" pattern="[A-Za-z/\\éèàêâô]{1,}" name="prenom" id="Prenom_id" value="{{ dataC['prenom']}}" required/>
+						<label class="mdl-textfield__label" for="Prenom_id">Prenom</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" pattern="[A-Za-z/\\éèàêâô]{1,}" name="nom" id="nom_id" value="{{ dataC['nom']}}"  required/>
+						<label class="mdl-textfield__label" for="nom_id">Nom</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" name="email" id="email_id" value="{{ dataC['email']}}" readonly required/>
+						<label class="mdl-textfield__label" for="email_id">Email</label>
+					</div>
+				</div>
+			</div>
+			<div class="mdl-card mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+				
+
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="password" pattern="[A-Za-z][A-Za-z0-9/\\@#$%&ù]*[0-9][A-Za-z0-9/\\@#$%&ù]*" name="passwordnouveau" id="passwordnew_id"  />
+						<label class="mdl-textfield__label" for="passwordnew_id"> Nouveau Password</label>
+						<span class="mdl-textfield__error">commence par une lettre et dois contenir un chiffre</span>
+					</div>
+
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="password" pattern="[A-Za-z][A-Za-z0-9/\\@#$%&ù]*[0-9][A-Za-z0-9/\\@#$%&ù]*" name="passwordnouveau1" id="passwordenew1_id"  />
+						<label class="mdl-textfield__label" for="passwordenew1_id">Confirmer Nouveau Password</label>
+						<span class="mdl-textfield__error">commence par une lettre et dois contenir un chiffre</span>
+					</div>
+					
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						Le compte est actuellement de type {{dataTypeC['typeCompte']}}.
+						<legend>Changer les droits de ce compte vers {{dataTypeC['NouveauTypeCompte']}}?</legend>
+						
+						<input type="radio" id="Droit1" name="User" value="{{dataTypeC['valNouveauTypeCompte']}}">
+						<label for="Droit1">Oui</label>
+						
+						<input type="radio" id="Droit2" name="User" value="{{dataTypeC['valtypeCompte']}}" checked>
+						<label for="Droit2">Non</label>
+						
+					</div>
+
+
+					<button type="submit" class="mdl-button mdl-color-text--blue-grey-900 mdl-js-button mdl-js-ripple-effect">Enregistrer</button>
+				
+			</div>
+		</section>
+	</form>
+	</div>
+</div>
+	  {% endblock %}

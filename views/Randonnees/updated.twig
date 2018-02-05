@@ -1,0 +1,19 @@
+{% extends 'view.twig' %}
+
+{% set space = '' %}
+
+{% block content %}
+	{{ block("content", "Randonnées/detail.twig") }}
+
+	{% block contentSB %}
+		<div id="snackbar">Randonnée modifiée</div>
+		<script>
+			window.onload = snackbar();
+			function snackbar() {
+				var x = document.getElementById("snackbar")
+				x.className = "show";
+				setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+			}
+		</script>
+	{% endblock %}
+{% endblock %}

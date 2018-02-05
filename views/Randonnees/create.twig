@@ -1,0 +1,114 @@
+{% extends 'view.twig' %}
+
+{% block content %}
+	<h1 class="title">Ajout d'une randonnée</h1>
+	{#Nécessaire pour l'utilisation de liste déroulante (cf: Boucle)#}
+	<link rel="stylesheet" href="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.css">
+	<script defer src="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.js"></script>
+
+	<div class="mdl-layout__tab-panel mdl-color--grey-300 is-active">
+		<form method="post" action="/web/created" enctype="multipart/form-data">
+          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+	            <div class="mdl-card mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+	              <div class="mdl-card__supporting-text">
+		              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                <input class="mdl-textfield__input" type="text" id="NomRando" name="NomRando" value="" required/>
+			                <label class="mdl-textfield__label" for="NomRando">Nom de la randonnée</label>
+			            </div>
+			            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                <input class="mdl-textfield__input" type="text" id="Localisation_id" name="Localisation" value="" required/>
+			                <label class="mdl-textfield__label" for="Localisation_id">Localisation</label>
+			            </div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                <input class="mdl-textfield__input" type="text" id="LieuDepart" name="LieuDepart" value="" required/>
+			                <label class="mdl-textfield__label" for="LieuDepart">Lieu de départ</label>
+			            </div>
+			            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                <input class="mdl-textfield__input" type="number" id="Departement" min="0" max="99" name="Departement" value="" required/>
+			                <label class="mdl-textfield__label" for="Departement">N° Département</label>
+			            </div>
+			            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                <input class="mdl-textfield__input" type="text" id="CarteIGN" name="CarteIGN" value=""/>
+			                <label class="mdl-textfield__label" for="CarteIGN">Carte IGN</label>
+			            </div>
+			            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                <input class="mdl-textfield__input" type="number" id="Distance" min="0" step="any" name="Distance" value="" required/>
+			                <label class="mdl-textfield__label" for="Distance">Distance en km</label>
+			            </div>
+			            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                <input class="mdl-textfield__input" type="number" id="Denivele" min="0" name="Denivele" value="" required/>
+			                <label class="mdl-textfield__label" for="Denivele">Denivele en m</label>
+			            </div>
+			            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                <input class="mdl-textfield__input" type="number" id="DifficulteIBP" min="0" name="DifficulteIBP" value=""/>
+			                <label class="mdl-textfield__label" for="DifficulteIBP">Difficulté (Indice) IBP</label>
+			            </div>
+			            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >
+			                <input class="mdl-textfield__input" type="number" id="Duree" min="0" name="Duree" value="" required/>
+			                <label class="mdl-textfield__label" for="Duree">Duree de la randonnée en H </label>
+			            </div>
+			        	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                <input class="mdl-textfield__input" type="text" id="TypeChemin" name="TypeChemin" value="" required/>
+			                <label class="mdl-textfield__label" for="TypeChemin">Type de Chemin</label>
+		            	</div>
+			        </div>
+	            </div>
+	            <div class="mdl-card mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+	              <div class="mdl-card__supporting-text">
+			        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				        <label for="Boucle" class="mdl-textfield__label">Boucle</label>
+				        <select class="mdl-textfield__input" name="Boucle" required>
+			            	<option value="1">OUI</option>
+					   		<option value="0">NON</option>
+					    </select>
+				    </div>
+
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty" data-upgraded=",MaterialTextfield">
+		                <input class="mdl-textfield__input" type="date" id="DateRandonnee" name="DateRandonnee" value="" placeholder="2017-12-07" required/>
+		                <label class="mdl-textfield__label" for="DateRandonnee">Date de la randonnée </label>
+		            </div>
+		            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		                <input class="mdl-textfield__input" type="text" id="Commentaire" name="Commentaire" value=""/>
+		                <label class="mdl-textfield__label" for="Commentaire">Commentaire</label>
+		            </div>
+		            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+		                <input class="mdl-textfield__input" type="number" id="DistanceDepuisParking" min="0" step="any" name="DistanceDepuisParking" value="" required/>
+		                <label class="mdl-textfield__label" for="DistanceDepuisParking">Distance depuis le parking en Km</label>
+		            </div>
+		            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		                <input class="mdl-textfield__input" type="text" id="GroupeRandonnee" pattern="[A-Za-z]{1}" name="GroupeRandonnee" value="" required/>
+		                <label class="mdl-textfield__label" for="GroupeRandonnee">Groupe de la randonnée</label>
+		            </div>
+		            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<legend>A privilégier en cas de :</legend>
+						<input type="radio" id="Meteo1" name="meteo" value="pluie">
+						<label for="Meteo1">Pluie</label>
+						
+						<input type="radio" id="Meteo2" name="meteo" value="chaleur">
+						<label for="Meteo2">Chaleur</label>
+						
+						<input type="radio" id="Meteo3" name="meteo" value="vent">
+						<label for="Meteo3">Vent</label>
+
+						<input type="radio" id="Meteo4" name="meteo" value="aucune" checked>
+						<label for="Meteo4">Aucune</label>	
+					</div>
+		            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty" data-upgraded=",MaterialTextfield">
+		                <input class="mdl-textfield__input" type="file" id="ItinérairePDF" name="ItinerairePdf" value="" accept=".pdf" />
+		                <label class="mdl-textfield__label" for="ItinérairePDF">Itinéraire en .PDF</label>
+		            </div>
+		            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty" data-upgraded=",MaterialTextfield">
+		                <input class="mdl-textfield__input" type="file" id="TraceGPX" name="TraceGpx" value="" accept=".gpx, .TRK" required/>
+		                <label class="mdl-textfield__label" for="TraceGPX">Trace en .GPX/.TRK </label>
+		            </div>
+		            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty" data-upgraded=",MaterialTextfield">
+		                <input class="mdl-textfield__input" type="file" id="Image" name="Image" value="" accept=".png , .jpeg, .jpg"/>
+		                <label class="mdl-textfield__label" for="Image">Image d'illustration</label>
+		            </div>
+		            <button type="submit" class="mdl-button mdl-color-text--blue-grey-900 mdl-js-button mdl-js-ripple-effect">Enregistrer</button>
+	              </div>
+	            </div>
+          </section>
+          </form>
+        </div>
+{% endblock %}

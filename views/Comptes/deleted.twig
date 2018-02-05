@@ -1,0 +1,13 @@
+{% extends 'Comptes/list.twig' %}
+
+{% block contentSB %}
+	<div id="snackbar">Le compte a été supprimé</div>
+	<script>
+		window.onload = snackbar();
+		function snackbar() {
+		    var x = document.getElementById("snackbar")
+		    x.className = "show";
+		    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3500);
+		}
+	</script>
+{% endblock %}

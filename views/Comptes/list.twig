@@ -1,0 +1,24 @@
+{% extends 'view.twig' %}
+
+{% block content %}
+
+  {% for comptes in comptes  %}
+   <ul class="listcomposants mdl-list">
+      <li class="mdl-list__item mdl-list__item--three-line mdl-color--blue-grey-100">
+        <a class="mdl-list__item-secondary-action" href="{{ path('detailsAdmin', {email: comptes.get('email')}) }}">
+          <span class="mdl-list__item-text-body">
+            Compte de : {{comptes.get('email')}}
+  		</span>
+        </a>
+        <span class="mdl-list__item-secondary-content">
+          <a class="mdl-list__item-secondary-action" href="{{ path('supprimer') }}?email={{comptes.get('email')}}"><i class="listcomposants material-icons">close</i></a>
+
+          <a class="mdl-list__item-secondary-action" href="{{ path('updateAdmin') }}?email={{comptes.get('email')}}"><i class="listcomposants material-icons">edit</i></a>
+        </span>
+      </li>
+
+  {% endfor %}
+  
+  {% block contentSB %}
+  {% endblock %}
+{% endblock %}

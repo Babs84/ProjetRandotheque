@@ -1,0 +1,50 @@
+{% extends 'view.twig' %}
+
+{% block content %}
+<div class="produits mdl-layout__tab-panel mdl-color--grey-300 is-active">
+	<div class="login mdl-card mdl-shadow--6dp">
+		<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+			<h2 class="mdl-card__title-text">Créer un compte</h2>
+		</div>
+		<div class="mdl-card__supporting-text">
+			<form method="post" action="{{ path('createdCompte') }}">
+				<div class="mdl-textfield mdl-js-textfield">
+					<input class="mdl-textfield__input" type="text" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" name="email" id="email_id" required/>
+					<label class="mdl-textfield__label" for="email_id">Email</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield">
+					<input class="mdl-textfield__input" type="password" name="password" pattern="[A-Za-z][A-Za-z0-9/\\@#$%&ù]*[0-9][A-Za-z0-9/\\@#$%&ù]*" id="password_id" required />
+					<label class="mdl-textfield__label" for="password_id">Password</label>
+					<span class="mdl-textfield__error">commence par une lettre et dois contenir un chiffre</span>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield">
+					<input class="mdl-textfield__input" type="password" name="password2" pattern="[A-Za-z][A-Za-z0-9/\\@#$%&ù]*[0-9][A-Za-z0-9/\\@#$%&ù]*" id="password_id2" required />
+					<label class="mdl-textfield__label" for="password_id2">Confirmer password</label>
+					<span class="mdl-textfield__error">commence par une lettre et dois contenir un chiffre</span>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield">
+					<input class="mdl-textfield__input" type="text" pattern="[A-Za-z/\\éèàêâô]{1,}" name="nom" id="nom_id" required/>
+					<label class="mdl-textfield__label" for="nom_id">Nom</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield">
+					<input class="mdl-textfield__input" type="text" pattern="[A-Za-z/\\éèàêâô]{1,}" name="prenom" id="prenom-id" required/>
+					<label class="mdl-textfield__label" for="prenom_id">Prenom</label>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					<legend>Compte :</legend>
+					<input type="radio" id="Admin" name="isAdmin" value="1">
+					<label for="isAdmin">Administrateur</label>
+					
+					<input type="radio" id="Admin" name="isAdmin" value="0" checked>
+					<label for="isAdmin">Animateur</label>
+				</div>
+			</div>
+			<div class="mdl-card__actions mdl-card--border">
+				<button type="submit" class="mdl-button mdl-color-text--blue-grey-900 mdl-js-button mdl-js-ripple-effect">Enregistrer</button>
+			</div>
+		</form>
+	</div>
+</div>
+	{% block contentSB %}
+	{% endblock %}
+{% endblock %}
